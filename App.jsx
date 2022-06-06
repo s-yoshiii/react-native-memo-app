@@ -1,13 +1,38 @@
+/* eslint-disable jsx-quotes */
+/* eslint-disable camelcase */
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  // eslint-disable-next-line prefer-const
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Memo App</Text>
-        <Text>ログアウト</Text>
+      <View style={styles.header}>
+        <View style={styles.headerInner}>
+          <Text style={styles.headerTitle}>Memo App</Text>
+          <Text style={styles.headerLogout}>
+            <MaterialCommunityIcons name='logout' size={24} color='black' />
+            Logout
+          </Text>
+        </View>
       </View>
       <View>
         <View>
@@ -47,7 +72,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  header: {
+    width: '100%',
+    height: 104,
+    backgroundColor: '#876445',
+    justifyContent: 'flex-end',
+  },
+  headerInner: {
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  headerLogout: {
+    position: 'absolute',
+    right: 19,
+    bottom: 16,
+    fontFamily: 'Roboto_500Medium',
+    letterSpacing: '0.1em',
+    color: '#fff',
+  },
+  headerTitle: {
+    marginBottom: 8,
+    fontSize: 22,
+    lineHeight: 32,
+    fontWeight: 600,
+    letterSpacing: '0.1em',
+    fontFamily: 'Roboto_700Bold',
+    color: '#fff',
   },
 });
