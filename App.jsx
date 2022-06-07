@@ -43,26 +43,8 @@ export default function App() {
           <Text>✕</Text>
         </View>
       </View>
-      <View>
-        <View>
-          <View>買い物リスト</View>
-          <View>2022/06/06 0:00:00</View>
-        </View>
-        <View>
-          <Text>✕</Text>
-        </View>
-      </View>
-      <View>
-        <View>
-          <View>買い物リスト</View>
-          <View>2022/06/06 0:00:00</View>
-        </View>
-        <View>
-          <Text>✕</Text>
-        </View>
-      </View>
-      <View>
-        <Text>+</Text>
+      <View style={styles.circleButton}>
+        <Text style={styles.circleButtonLabel}>+</Text>
       </View>
     </View>
   );
@@ -94,7 +76,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontSize: 22,
     lineHeight: 32,
-    fontWeight: 600,
+    fontWeight: 700,
     letterSpacing: '0.1em',
     fontFamily: 'Roboto_700Bold',
     color: '#fff',
@@ -106,14 +88,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 19,
+    borderBottomColor: '#CA965C',
+    borderBottomWidth: 1,
   },
   memoListTitle: {
     fontSize: 16,
     lineHeight: 32,
+    fontWeight: 'bold',
   },
   memoListDate: {
     fontSize: 10,
     lineHeight: 16,
     color: '#666666',
+  },
+  circleButton: {
+    backgroundColor: '#876445',
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 40,
+    right: 40,
+  },
+  circleButtonLabel: {
+    color: '#fff',
+    fontSize: 40,
+    lineHeight: 40,
   },
 });
