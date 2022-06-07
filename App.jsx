@@ -34,10 +34,10 @@ export default function App() {
           </Text>
         </View>
       </View>
-      <View>
+      <View style={styles.memoListItem}>
         <View>
-          <View>買い物リスト</View>
-          <View>2022/06/06 0:00:00</View>
+          <View style={styles.memoListTitle}>買い物リスト</View>
+          <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
         </View>
         <View>
           <Text>✕</Text>
@@ -98,5 +98,22 @@ const styles = StyleSheet.create({
     letterSpacing: '0.1em',
     fontFamily: 'Roboto_700Bold',
     color: '#fff',
+  },
+  memoListItem: {
+    backgroundColor: 'rgba(244,223,186,0.3)',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 19,
+  },
+  memoListTitle: {
+    fontSize: 16,
+    lineHeight: 32,
+  },
+  memoListDate: {
+    fontSize: 10,
+    lineHeight: 16,
+    color: '#666666',
   },
 });
