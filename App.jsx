@@ -1,4 +1,3 @@
-/* eslint-disable jsx-quotes */
 /* eslint-disable camelcase */
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -8,9 +7,11 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import AppLoading from 'expo-app-loading';
 import { StyleSheet, Text, View } from 'react-native';
+import Header from './src/components/Header';
+import MemoList from './src/components/MemoList';
 
 export default function App() {
   // eslint-disable-next-line prefer-const
@@ -25,24 +26,8 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerInner}>
-          <Text style={styles.headerTitle}>Memo App</Text>
-          <Text style={styles.headerLogout}>
-            <MaterialCommunityIcons name='logout' size={24} color='black' />
-            Logout
-          </Text>
-        </View>
-      </View>
-      <View style={styles.memoListItem}>
-        <View>
-          <View style={styles.memoListTitle}>買い物リスト</View>
-          <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
-        </View>
-        <View>
-          <Text>✕</Text>
-        </View>
-      </View>
+      <Header />
+      <MemoList />
       <View style={styles.circleButton}>
         <Text style={styles.circleButtonLabel}>+</Text>
       </View>
@@ -55,32 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {
-    width: '100%',
-    height: 104,
-    backgroundColor: '#876445',
-    justifyContent: 'flex-end',
-  },
-  headerInner: {
-    alignItems: 'center',
-  },
-  headerLogout: {
-    position: 'absolute',
-    right: 19,
-    bottom: 16,
-    fontFamily: 'Roboto_500Medium',
-    letterSpacing: '0.1em',
-    color: '#fff',
-  },
-  headerTitle: {
-    marginBottom: 8,
-    fontSize: 22,
-    lineHeight: 32,
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    fontFamily: 'Roboto_700Bold',
-    color: '#fff',
-  },
+
   memoListItem: {
     backgroundColor: 'rgba(244,223,186,0.3)',
     flexDirection: 'row',
