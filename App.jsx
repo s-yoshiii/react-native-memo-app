@@ -111,6 +111,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     right: 40,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 8,
   },
   circleButtonLabel: {
     color: '#fff',
