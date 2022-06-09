@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
   useFonts,
@@ -9,10 +8,7 @@ import {
 } from '@expo-google-fonts/roboto';
 
 import AppLoading from 'expo-app-loading';
-import { StyleSheet, View } from 'react-native';
-import Header from './src/components/Header';
-import MemoList from './src/components/MemoList';
-import CircleButton from './src/components/CircleButton';
+import MemoListScreen from './src/screens/MemoListScreen';
 
 export default function App() {
   // eslint-disable-next-line prefer-const
@@ -25,18 +21,5 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-  return (
-    <View style={styles.container}>
-      <Header />
-      <MemoList />
-      <CircleButton>+</CircleButton>
-    </View>
-  );
+  return <MemoListScreen />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
