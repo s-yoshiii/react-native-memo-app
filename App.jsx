@@ -9,6 +9,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 import MemoListScreen from './src/screens/MemoListScreen';
+import MemoDetailScreen from './src/screens/MemoDetailScreen';
 
 export default function App() {
   // eslint-disable-next-line prefer-const
@@ -21,5 +22,5 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-  return <MemoListScreen />;
+  return <MemoDetailScreen />;
 }
