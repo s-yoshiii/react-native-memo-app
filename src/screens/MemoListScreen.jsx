@@ -9,7 +9,7 @@ function MemoListScreen() {
     <View style={styles.container}>
       <Header />
       <MemoList />
-      <CircleButton>+</CircleButton>
+      <CircleButton name="plus" />
     </View>
   );
 }
