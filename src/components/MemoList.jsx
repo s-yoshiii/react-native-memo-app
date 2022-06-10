@@ -10,7 +10,7 @@ function MemoList() {
         <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
       </View>
       <View>
-        <Feather name="x" size={16} color="black" />
+        <Feather name="x" size={16} color="#876445" />
       </View>
     </View>
   );

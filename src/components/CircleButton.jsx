@@ -7,7 +7,7 @@ function CircleButton(props) {
   const { style, name } = props;
   return (
     <View style={[styles.circleButton, style]}>
-      <Feather name={name} size={24} color="black" />
+      <Feather name={name} size={24} color="#fff" />
     </View>
   );
 }

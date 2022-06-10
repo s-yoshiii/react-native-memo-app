@@ -14,7 +14,11 @@ function MemoDetailScreen() {
       <ScrollView style={styles.memoBody}>
         <Text>買い物リスト テキストテキストテキスト</Text>
       </ScrollView>
-      <CircleButton name="edit-2" style={{ top: 160, botom: 'auto' }} />
+      <CircleButton
+        name="edit-2"
+        color="#fff"
+        style={{ top: 160, botom: 'auto' }}
+      />
     </View>
   );
 }
