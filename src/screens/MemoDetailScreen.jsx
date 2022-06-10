@@ -11,10 +11,10 @@ function MemoDetailScreen() {
         <Text style={styles.memoTitle}>買い物リスト</Text>
         <Text style={styles.memoDate}>2022/06/06 0:00:00</Text>
       </View>
-      <ScrollView>
+      <ScrollView style={styles.memoBody}>
         <Text>買い物リスト テキストテキストテキスト</Text>
       </ScrollView>
-      <CircleButton>+</CircleButton>
+      <CircleButton style={{ top: 160, botom: 'auto' }}>+</CircleButton>
     </View>
   );
 }
@@ -39,6 +39,10 @@ const styles = StyleSheet.create({
   memoDate: {
     color: '#fff',
     fontSize: 12,
+  },
+  memoBody: {
+    paddingVertical: 32,
+    paddingHorizontal: 27,
   },
 });
 export default MemoDetailScreen;
