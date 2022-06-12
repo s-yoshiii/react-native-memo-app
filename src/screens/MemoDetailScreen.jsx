@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line object-curly-newline
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
