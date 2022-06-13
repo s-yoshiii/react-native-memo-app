@@ -16,7 +16,7 @@ function MemoDetailScreen() {
         <Text>買い物リスト テキストテキストテキスト</Text>
       </ScrollView>
       <CircleButton
-        name="edit-2"
+        name="pencil"
         color="#fff"
         style={{ top: 160, botom: 'auto' }}
       />

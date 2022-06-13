@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import Icon from './Icon';
 
 function MemoList() {
   return (
@@ -10,7 +10,7 @@ function MemoList() {
         <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
       </View>
       <View>
-        <Feather name="x" size={16} color="#876445" />
+        <Icon name="delete" size={24} color="#876445" />
       </View>
     </View>
   );
