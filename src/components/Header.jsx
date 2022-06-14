@@ -26,15 +26,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 19,
     bottom: 16,
-    letterSpacing: '0.1em',
+    letterSpacing: 1.2,
     color: '#fff',
   },
   headerTitle: {
     marginBottom: 8,
     fontSize: 22,
     lineHeight: 32,
-    fontWeight: 700,
-    letterSpacing: '0.1em',
+    fontWeight: 'bold',
+    letterSpacing: 1.8,
     color: '#fff',
   },
 });
