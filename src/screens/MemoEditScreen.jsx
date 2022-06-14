@@ -1,18 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+} from 'react-native';
 import CircleButton from '../components/CircleButton';
 
 import Header from '../components/Header';
 
 function MemoEditScreen() {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="height">
       <Header />
       <View style={styles.inputContainer}>
         <TextInput value="買い物リスト" multiline style={styles.input} />
       </View>
-      <CircleButton name="check" />
-    </View>
+      <CircleButton name="check" color="#fff" />
+    </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({
