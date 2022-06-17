@@ -7,14 +7,14 @@ import KeyboardSafeView from '../components/KeyboardSafeView';
 
 function MemoCreateScreen() {
   return (
-    <KeyboardSafeView style={styles.container} behavior="height">
+    <KeyboardSafeView style={styles.container}>
       <Header />
       <View style={styles.inputContainer}>
         <TextInput
           value="買い物リスト"
           multiline
           style={styles.input}
-          onSubmitEditing={Keyboard}
+          onSubmitEditing={Keyboard.dismiss}
         />
       </View>
       <CircleButton name="check" color="#fff" />

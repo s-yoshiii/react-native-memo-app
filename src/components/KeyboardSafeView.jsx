@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Keyboard, Dimensions, Animated, ViewPropTypes } from 'react-native';
+
 import { node } from 'prop-types';
 
 export default function KeyboardSafeView({ children, style }) {

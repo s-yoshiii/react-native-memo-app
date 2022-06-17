@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
-import CircleButton from '../components/CircleButton';
+import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
 
+import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
 import KeyboardSafeView from '../components/KeyboardSafeView';
 
@@ -10,7 +10,12 @@ function MemoEditScreen() {
     <KeyboardSafeView style={styles.container}>
       <Header />
       <View style={styles.inputContainer}>
-        <TextInput value="買い物リスト" multiline style={styles.input} />
+        <TextInput
+          value="買い物リスト"
+          multiline
+          style={styles.input}
+          onSubmitEditing={Keyboard.dismiss}
+        />
       </View>
       <CircleButton name="check" color="#fff" />
     </KeyboardSafeView>
