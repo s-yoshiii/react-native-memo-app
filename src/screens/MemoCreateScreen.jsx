@@ -2,13 +2,11 @@ import React from 'react';
 import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
 
 import CircleButton from '../components/CircleButton';
-import Header from '../components/Header';
 import KeyboardSafeView from '../components/KeyboardSafeView';
 
 function MemoCreateScreen() {
   return (
     <KeyboardSafeView style={styles.container}>
-      <Header />
       <View style={styles.inputContainer}>
         <TextInput
           value="買い物リスト"

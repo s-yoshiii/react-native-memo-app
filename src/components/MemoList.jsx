@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
 
 function MemoList() {
   return (
     <View style={styles.memoListItem}>
       <View>
-        <View style={styles.memoListTitle}>買い物リスト</View>
-        <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
+        <Text style={styles.memoListTitle}>買い物リスト</Text>
+        <Text style={styles.memoListDate}>2022/06/06 0:00:00</Text>
       </View>
       <TouchableOpacity>
         <Icon name="delete" size={24} color="#876445" />

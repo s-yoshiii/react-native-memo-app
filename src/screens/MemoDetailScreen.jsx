@@ -2,12 +2,10 @@ import React from 'react';
 // eslint-disable-next-line object-curly-newline
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import CircleButton from '../components/CircleButton';
-import Header from '../components/Header';
 
 function MemoDetailScreen() {
   return (
     <View style={styles.container}>
-      <Header />
       <View style={styles.memoHeader}>
         <Text style={styles.memoTitle}>買い物リスト</Text>
         <Text style={styles.memoDate}>2022/06/06 0:00:00</Text>
@@ -18,7 +16,7 @@ function MemoDetailScreen() {
       <CircleButton
         name="pencil"
         color="#fff"
-        style={{ top: 160, botom: 'auto' }}
+        style={{ top: 60, botom: 'auto' }}
       />
     </View>
   );
