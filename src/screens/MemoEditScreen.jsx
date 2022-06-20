@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
+import { View, StyleSheet, TextInput, Keyboard, Alert } from 'react-native';
 
 import CircleButton from '../components/CircleButton';
 import Header from '../components/Header';
@@ -17,7 +17,13 @@ function MemoEditScreen() {
           onSubmitEditing={Keyboard.dismiss}
         />
       </View>
-      <CircleButton name="check" color="#fff" />
+      <CircleButton
+        name="check"
+        color="#fff"
+        onPress={() => {
+          Alert.alert('Pressed');
+        }}
+      />
     </KeyboardSafeView>
   );
 }
