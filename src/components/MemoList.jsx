@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
 
 function MemoList() {
@@ -9,9 +9,9 @@ function MemoList() {
         <View style={styles.memoListTitle}>買い物リスト</View>
         <View style={styles.memoListDate}>2022/06/06 0:00:00</View>
       </View>
-      <View>
+      <TouchableOpacity>
         <Icon name="delete" size={24} color="#876445" />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

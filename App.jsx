@@ -9,5 +9,5 @@ import LoginScreen from './src/screens/LoginScreen';
 import SingUpScreen from './src/screens/SingUpScreen';
 
 export default function App() {
-  return <SingUpScreen />;
+  return <MemoListScreen />;
 }
