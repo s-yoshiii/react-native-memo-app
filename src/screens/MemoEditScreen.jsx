@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Keyboard, Alert } from 'react-native';
+import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
 
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
 
-function MemoEditScreen() {
+function MemoEditScreen(props) {
+  const { navigation } = props;
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -19,7 +20,7 @@ function MemoEditScreen() {
         name="check"
         color="#fff"
         onPress={() => {
-          Alert.alert('Pressed');
+          navigation.goBack();
         }}
       />
     </KeyboardSafeView>
