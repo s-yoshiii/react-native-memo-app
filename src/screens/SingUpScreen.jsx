@@ -10,7 +10,8 @@ import {
 
 import Button from '../components/Button';
 
-function SingUpScreen() {
+function SingUpScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -20,7 +21,7 @@ function SingUpScreen() {
         <Button
           label="Submit"
           onPress={() => {
-            Alert.alert('Submit');
+            navigation.navigate('MemoList');
           }}
         />
         <View style={styles.footer}>

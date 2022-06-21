@@ -3,11 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import CircleButton from '../components/CircleButton';
 import MemoList from '../components/MemoList';
 
-function MemoListScreen() {
+function MemoListScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <MemoList />
-      <CircleButton name="plus" color="#fff" />
+      <CircleButton
+        name="plus"
+        color="#fff"
+        onPress={() => {
+          navigation.navigate('MemoCreate');
+        }}
+      />
     </View>
   );
 }
