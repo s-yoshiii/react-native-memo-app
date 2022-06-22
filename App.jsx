@@ -27,6 +27,8 @@ export default function App() {
           headerTintColor: '#fff',
           headerBackTitle: 'Back',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
         }}
       >
         <Stack.Screen name="MemoList" component={MemoListScreen} />
