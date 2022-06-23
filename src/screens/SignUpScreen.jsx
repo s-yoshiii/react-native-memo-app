@@ -5,7 +5,9 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
+import firebase from 'firebase';
 
 import Button from '../components/Button';
 
@@ -13,6 +15,23 @@ function SingUpScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  function handlePress() {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const { user } = userCredential;
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'MemoList' }],
+        });
+        console.log(user.uid);
+      })
+      .catch((error) => {
+        Alert(error.code);
+        console.log(error.code, error.massage);
+      });
+  }
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -41,10 +60,7 @@ function SingUpScreen(props) {
         <Button
           label="Submit"
           onPress={() => {
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'MemoList' }],
-            });
+            handlePress();
           }}
         />
         <View style={styles.footer}>
