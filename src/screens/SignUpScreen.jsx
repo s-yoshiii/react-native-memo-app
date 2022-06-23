@@ -23,6 +23,10 @@ function SingUpScreen(props) {
           onChangeText={(text) => {
             setEmail(text);
           }}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholder="Email Address"
+          textContentType="emailAddress"
         />
         <TextInput
           style={styles.input}
@@ -30,6 +34,9 @@ function SingUpScreen(props) {
           onChangeText={(text) => {
             setPassword(text);
           }}
+          autoCapitalize="none"
+          placeholder="Password"
+          secureTextEntry
         />
         <Button
           label="Submit"
