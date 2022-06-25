@@ -1,11 +1,28 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
 
+import firebase from 'firebase';
+
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
 
 function MemoCreateScreen(props) {
   const { navigation } = props;
+  const handlePress = () => {
+    const db = firebase.firestore();
+    const ref = db.collection('memos');
+    ref
+      .add({
+        bodyText: 'Hello',
+      })
+      .then((docRef) => {
+        console.log('Created!', docRef.id);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+    navigation.goBack();
+  };
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -16,13 +33,7 @@ function MemoCreateScreen(props) {
           onSubmitEditing={Keyboard.dismiss}
         />
       </View>
-      <CircleButton
-        name="check"
-        color="#fff"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      <CircleButton name="check" color="#fff" onPress={handlePress} />
     </KeyboardSafeView>
   );
 }
