@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
 
 import firebase from 'firebase';
@@ -8,12 +8,15 @@ import KeyboardSafeView from '../components/KeyboardSafeView';
 
 function MemoCreateScreen(props) {
   const { navigation } = props;
+  const [bodyText, setBodyText] = useState('');
   const handlePress = () => {
+    const { currentUser } = firebase.auth();
     const db = firebase.firestore();
-    const ref = db.collection('memos');
+    const ref = db.collection(`users/${currentUser.uid}/memos`);
     ref
       .add({
-        bodyText: 'Hello',
+        bodyText,
+        upDatedAt: new Date(),
       })
       .then((docRef) => {
         console.log('Created!', docRef.id);
@@ -27,10 +30,14 @@ function MemoCreateScreen(props) {
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          value="買い物リスト"
+          value={bodyText}
           multiline
           style={styles.input}
+          autoFocus
           onSubmitEditing={Keyboard.dismiss}
+          onChangeText={(text) => {
+            setBodyText(text);
+          }}
         />
       </View>
       <CircleButton name="check" color="#fff" onPress={handlePress} />
