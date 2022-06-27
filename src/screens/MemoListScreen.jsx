@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import firebase from 'firebase';
 import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
 import MemoList from '../components/MemoList';
@@ -11,6 +12,20 @@ function MemoListScreen(props) {
       // eslint-disable-next-line react/no-unstable-nested-components
       headerRight: () => <LogOutButton />,
     });
+  }, []);
+  useEffect(() => {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    let unscribe = () => {};
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/memos`);
+      unscribe = ref.onSnapshot((snapshot) => {
+        snapshot.forEach((doc) => {
+          console.log(doc.id, doc.data());
+        });
+      });
+    }
+    return unscribe;
   }, []);
   return (
     <View style={styles.container}>
