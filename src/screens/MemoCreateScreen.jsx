@@ -16,7 +16,7 @@ function MemoCreateScreen(props) {
     ref
       .add({
         bodyText,
-        upDatedAt: new Date(),
+        updatedAt: new Date(),
       })
       .then((docRef) => {
         console.log('Created!', docRef.id);
