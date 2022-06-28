@@ -21,7 +21,7 @@ function MemoList(props) {
         key={item.id}
         style={styles.memoListItem}
         onPress={() => {
-          navigation.navigate('MemoDetail');
+          navigation.navigate('MemoDetail', { id: item.id });
         }}
       >
         <View>

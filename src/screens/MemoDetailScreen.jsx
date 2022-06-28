@@ -1,10 +1,13 @@
+import { shape, string } from 'prop-types';
 import React from 'react';
 // eslint-disable-next-line object-curly-newline
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import CircleButton from '../components/CircleButton';
 
 function MemoDetailScreen(props) {
-  const { navigation } = props;
+  const { navigation, route } = props;
+  const { id } = route.params;
+  console.log(id);
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
@@ -25,6 +28,11 @@ function MemoDetailScreen(props) {
     </View>
   );
 }
+MemoDetailScreen.propTypes = {
+  route: shape({
+    params: shape({ id: string }),
+  }).isRequired,
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
