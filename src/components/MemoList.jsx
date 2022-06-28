@@ -1,5 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+  FlatList,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { shape, string, instanceOf, arrayOf } from 'prop-types';
 import Icon from './Icon';
@@ -8,31 +15,40 @@ function MemoList(props) {
   // eslint-disable-next-line react/prop-types
   const { memos } = props;
   const navigation = useNavigation();
-  return (
-    <View>
-      {memos.map((memo) => (
-        <TouchableOpacity
-          key={memo.id}
-          style={styles.memoListItem}
-          onPress={() => {
-            navigation.navigate('MemoDetail');
-          }}
-        >
-          <View>
-            <Text style={styles.memoListTitle}>{memo.bodyText}</Text>
-            <Text style={styles.memoListDate}>{String(memo.updatedAt)}</Text>
-          </View>
+  function renderItem({ item }) {
+    return (
+      <TouchableOpacity
+        key={item.id}
+        style={styles.memoListItem}
+        onPress={() => {
+          navigation.navigate('MemoDetail');
+        }}
+      >
+        <View>
+          <Text style={styles.memoListTitle} numberOfLines={1}>
+            {item.bodyText}
+          </Text>
+          <Text style={styles.memoListDate}>{String(item.updatedAt)}</Text>
+        </View>
 
-          <TouchableOpacity
-            onPress={() => {
-              Alert.alert('Are you sure');
-            }}
-            style={styles.memoDelete}
-          >
-            <Icon name="delete" size={24} color="#876445" />
-          </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            Alert.alert('Are you sure');
+          }}
+          style={styles.memoDelete}
+        >
+          <Icon name="delete" size={24} color="#876445" />
         </TouchableOpacity>
-      ))}
+      </TouchableOpacity>
+    );
+  }
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={memos}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
@@ -46,6 +62,9 @@ MemoList.propsTypes = {
   ).isRequired,
 };
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   memoListItem: {
     backgroundColor: 'rgba(244,223,186,0.3)',
     flexDirection: 'row',
