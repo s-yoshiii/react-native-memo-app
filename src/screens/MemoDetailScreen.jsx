@@ -1,18 +1,39 @@
+import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
-import React from 'react';
 // eslint-disable-next-line object-curly-newline
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import firebase from 'firebase';
+
 import CircleButton from '../components/CircleButton';
 
 function MemoDetailScreen(props) {
   const { navigation, route } = props;
   const { id } = route.params;
-  console.log(id);
+  const [memo, setMemo] = useState(null);
+  // console.log(id);
+  useEffect(() => {
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+      unsubscribe = ref.onSnapshot((doc) => {
+        // console.log(doc.id, doc.data());
+        const data = doc.data();
+        setMemo({
+          id: doc.id,
+          bodyText: data.bodyText,
+          upDateAt: data.upDateAt.toDate(),
+        });
+      });
+    }
+    return unsubscribe;
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoTitle}>買い物リスト</Text>
-        <Text style={styles.memoDate}>2022/06/06 0:00:00</Text>
+        <Text style={styles.memoTitle}>{memo && memo.bodyText}</Text>
+        {/* <Text style={styles.memoDate}>{memo && String(memo.upDateAt)}</Text> */}
       </View>
       <ScrollView style={styles.memoBody}>
         <Text>買い物リスト テキストテキストテキスト</Text>
