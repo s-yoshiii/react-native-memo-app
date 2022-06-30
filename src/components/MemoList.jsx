@@ -57,7 +57,7 @@ MemoList.propsTypes = {
     shape({
       id: string,
       bodyText: string,
-      upDateAt: instanceOf(Date),
+      updatedAt: instanceOf(Date),
     })
   ).isRequired,
 };

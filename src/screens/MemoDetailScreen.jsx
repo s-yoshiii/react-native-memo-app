@@ -18,12 +18,12 @@ function MemoDetailScreen(props) {
       const db = firebase.firestore();
       const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
       unsubscribe = ref.onSnapshot((doc) => {
-        // console.log(doc.id, doc.data());
+        console.log(doc.id, doc.data());
         const data = doc.data();
         setMemo({
           id: doc.id,
           bodyText: data.bodyText,
-          upDateAt: data.upDateAt.toDate(),
+          updatedAt: data.updatedAt.toDate(),
         });
       });
     }
@@ -32,8 +32,10 @@ function MemoDetailScreen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoTitle}>{memo && memo.bodyText}</Text>
-        {/* <Text style={styles.memoDate}>{memo && String(memo.upDateAt)}</Text> */}
+        <Text style={styles.memoTitle} numberOfLines={1}>
+          {memo && memo.bodyText}
+        </Text>
+        <Text style={styles.memoDate}>{memo && String(memo.updatedAt)}</Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text>買い物リスト テキストテキストテキスト</Text>
