@@ -46,7 +46,10 @@ function MemoDetailScreen(props) {
         color="#fff"
         style={{ top: 60, botom: 'auto' }}
         onPress={() => {
-          navigation.navigate('MemoEdit');
+          navigation.navigate('MemoEdit', {
+            id: memo.id,
+            bodyText: memo.bodyText,
+          });
         }}
       />
     </View>
