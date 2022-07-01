@@ -10,6 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { shape, string, instanceOf, arrayOf } from 'prop-types';
 import Icon from './Icon';
+import { dateToString } from '../utils';
 
 function MemoList(props) {
   // eslint-disable-next-line react/prop-types
@@ -28,7 +29,9 @@ function MemoList(props) {
           <Text style={styles.memoListTitle} numberOfLines={1}>
             {item.bodyText}
           </Text>
-          <Text style={styles.memoListDate}>{String(item.updatedAt)}</Text>
+          <Text style={styles.memoListDate}>
+            {dateToString(item.updatedAt)}
+          </Text>
         </View>
 
         <TouchableOpacity

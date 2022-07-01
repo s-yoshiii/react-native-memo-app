@@ -4,5 +4,5 @@ export function dateToString(date) {
   if (!date) {
     return '';
   }
-  return format(date, 'yyyy年mm月dd HH時mm分');
+  return format(date, 'yyyy年M月dd日 HH時mm分');
 }
