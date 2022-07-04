@@ -1,6 +1,7 @@
 import { shape, string } from 'prop-types';
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, Keyboard } from 'react-native';
+import { View, StyleSheet, TextInput, Keyboard, Alert } from 'react-native';
+import firebase from 'firebase';
 
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
@@ -9,6 +10,21 @@ function MemoEditScreen(props) {
   const { navigation, route } = props;
   const { id, bodyText } = route.params;
   const [body, setBody] = useState(bodyText);
+  function handlePress() {
+    const { currentUser } = firebase.auth();
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+      ref
+        .set({ bodyText: body, updatedAt: new Date() }, { merge: true })
+        .then(() => {
+          navigation.goBack();
+        })
+        .catch((error) => {
+          Alert.alert(error.code);
+        });
+    }
+  }
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -17,18 +33,10 @@ function MemoEditScreen(props) {
           multiline
           style={styles.input}
           onSubmitEditing={Keyboard.dismiss}
-          onChangeText={(text) => {
-            setBody(text);
-          }}
+          onChangeText={(text) => setBody(text)}
         />
       </View>
-      <CircleButton
-        name="check"
-        color="#fff"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      <CircleButton name="check" color="#fff" onPress={handlePress} />
     </KeyboardSafeView>
   );
 }
