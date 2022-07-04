@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
-// eslint-disable-next-line object-curly-newline
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 
