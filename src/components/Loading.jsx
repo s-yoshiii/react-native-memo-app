@@ -1,7 +1,12 @@
+import { bool } from 'prop-types';
 import React from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 
-function Loading() {
+function Loading(props) {
+  const { isLoading } = props;
+  if (!isLoading) {
+    return null;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -10,6 +15,12 @@ function Loading() {
     </View>
   );
 }
+Loading.propTypes = {
+  isLoading: bool,
+};
+Loading.defaultProps = {
+  isLoading: false,
+};
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',

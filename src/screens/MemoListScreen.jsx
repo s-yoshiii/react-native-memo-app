@@ -10,6 +10,7 @@ import Loading from '../components/Loading';
 function MemoListScreen(props) {
   const { navigation } = props;
   const [memos, setMemos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     navigation.setOptions({
       // eslint-disable-next-line react/no-unstable-nested-components
@@ -21,6 +22,7 @@ function MemoListScreen(props) {
     const { currentUser } = firebase.auth();
     let unscribe = () => {};
     if (currentUser) {
+      setIsLoading(true);
       const ref = db
         .collection(`users/${currentUser.uid}/memos`)
         .orderBy('updatedAt', 'desc');
@@ -36,9 +38,11 @@ function MemoListScreen(props) {
             });
           });
           setMemos(userMemos);
+          setIsLoading(false);
         },
         (error) => {
           console.log(error);
+          setIsLoading(false);
           Alert.alert('データの読み込みに失敗しました');
         }
       );
@@ -48,6 +52,7 @@ function MemoListScreen(props) {
   if (memos.length === 0) {
     return (
       <View style={emptyStyles.container}>
+        <Loading isLoading={isLoading} />
         <View style={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
           <Button
@@ -63,7 +68,6 @@ function MemoListScreen(props) {
   }
   return (
     <View style={styles.container}>
-      <Loading />
       <MemoList memos={memos} />
       <CircleButton
         name="plus"
