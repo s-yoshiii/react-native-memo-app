@@ -5,6 +5,7 @@ import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
 import MemoList from '../components/MemoList';
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 
 function MemoListScreen(props) {
   const { navigation } = props;
@@ -62,6 +63,7 @@ function MemoListScreen(props) {
   }
   return (
     <View style={styles.container}>
+      <Loading />
       <MemoList memos={memos} />
       <CircleButton
         name="plus"
