@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { shape, string, instanceOf, arrayOf } from 'prop-types';
+import firebase from 'firebase';
 import Icon from './Icon';
 import { dateToString } from '../utils';
 
@@ -16,13 +17,37 @@ function MemoList(props) {
   // eslint-disable-next-line react/prop-types
   const { memos } = props;
   const navigation = useNavigation();
+  function deleteMemo(id) {
+    const { currentUser } = firebase.auth();
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+      Alert.alert('メモを削除します。', 'よろしいですか？', [
+        {
+          text: 'キャンセル',
+          onPress: () => {},
+        },
+        {
+          text: '削除する',
+          style: 'destructive',
+          onPress: () => {
+            ref.delete().catch(() => {
+              Alert.alert('削除に失敗しました。');
+            });
+          },
+        },
+      ]);
+    }
+  }
   function renderItem({ item }) {
     return (
       <TouchableOpacity
         key={item.id}
         style={styles.memoListItem}
         onPress={() => {
-          navigation.navigate('MemoDetail', { id: item.id });
+          navigation.navigate('MemoDetail', {
+            id: item.id,
+          });
         }}
       >
         <View>
@@ -35,9 +60,7 @@ function MemoList(props) {
         </View>
 
         <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Are you sure');
-          }}
+          onPress={() => deleteMemo(item.id)}
           style={styles.memoDelete}
         >
           <Icon name="delete" size={24} color="#876445" />
