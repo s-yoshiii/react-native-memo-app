@@ -10,6 +10,7 @@ import {
 import firebase from 'firebase';
 
 import Button from '../components/Button';
+import { translateErrors } from '../utils';
 
 function SingUpScreen(props) {
   const { navigation } = props;
@@ -28,8 +29,8 @@ function SingUpScreen(props) {
         console.log(user.uid);
       })
       .catch((error) => {
-        Alert(error.code);
-        console.log(error.code, error.massage);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       });
   }
   return (

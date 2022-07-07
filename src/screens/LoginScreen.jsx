@@ -11,6 +11,7 @@ import firebase from 'firebase';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import { translateErrors } from '../utils';
 
 function LoginScreen(props) {
   const { navigation } = props;
@@ -44,8 +45,8 @@ function LoginScreen(props) {
         console.log(user.uid);
       })
       .catch((error) => {
-        Alert.alert(error.code);
-        console.log(error.code, error.massage);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       })
       .then(() => {
         setIsLoading(false);

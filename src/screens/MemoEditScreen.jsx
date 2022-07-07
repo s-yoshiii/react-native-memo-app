@@ -2,6 +2,7 @@ import { shape, string } from 'prop-types';
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Keyboard, Alert } from 'react-native';
 import firebase from 'firebase';
+import { translateErrors } from '../utils';
 
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
@@ -21,7 +22,8 @@ function MemoEditScreen(props) {
           navigation.goBack();
         })
         .catch((error) => {
-          Alert.alert(error.code);
+          const errorMsg = translateErrors(error.code);
+          Alert.alert(errorMsg.title, errorMsg.description);
         });
     }
   }
