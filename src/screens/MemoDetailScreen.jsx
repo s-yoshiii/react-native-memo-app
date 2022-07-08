@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import {
+  View, Text, ScrollView, StyleSheet,
+} from 'react-native';
 import firebase from 'firebase';
 
 import CircleButton from '../components/CircleButton';

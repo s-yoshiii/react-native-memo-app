@@ -8,7 +8,9 @@ import {
   FlatList,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { shape, string, instanceOf, arrayOf } from 'prop-types';
+import {
+  shape, string, instanceOf, arrayOf,
+} from 'prop-types';
 import firebase from 'firebase';
 import Icon from './Icon';
 import { dateToString } from '../utils';
@@ -84,7 +86,7 @@ MemoList.propsTypes = {
       id: string,
       bodyText: string,
       updatedAt: instanceOf(Date),
-    })
+    }),
   ).isRequired,
 };
 const styles = StyleSheet.create({

@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Keyboard, Dimensions, Animated, ViewPropTypes } from 'react-native';
+import {
+  Keyboard, Dimensions, Animated, ViewPropTypes,
+} from 'react-native';
 
 import { node } from 'prop-types';
 
@@ -20,7 +22,7 @@ export default function KeyboardSafeView({ children, style }) {
   useEffect(() => {
     if (
       [initialViewHeight, animatedViewHeight, viewHeight].some(
-        (val) => val === null
+        (val) => val === null,
       )
     ) {
       return;
@@ -44,8 +46,7 @@ export default function KeyboardSafeView({ children, style }) {
 
   const handleShow = ({ endCoordinates }) => {
     if (endCoordinates.height && initialViewHeight.current) {
-      const keyboardHeight =
-        Dimensions.get('window').height - endCoordinates.screenY;
+      const keyboardHeight = Dimensions.get('window').height - endCoordinates.screenY;
       setViewHeight(initialViewHeight.current - keyboardHeight);
     }
   };
@@ -66,9 +67,9 @@ export default function KeyboardSafeView({ children, style }) {
 
   const animatedStyle = viewHeight
     ? {
-        height: animatedViewHeight.current,
-        flex: 0,
-      }
+      height: animatedViewHeight.current,
+      flex: 0,
+    }
     : {};
   return (
     <Animated.View style={[style, animatedStyle]} onLayout={handleLayout}>

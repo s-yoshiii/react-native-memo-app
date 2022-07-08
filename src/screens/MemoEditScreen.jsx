@@ -1,6 +1,8 @@
 import { shape, string } from 'prop-types';
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, Keyboard, Alert } from 'react-native';
+import {
+  View, StyleSheet, TextInput, Keyboard, Alert,
+} from 'react-native';
 import firebase from 'firebase';
 import { translateErrors } from '../utils';
 

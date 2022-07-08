@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert, Text } from 'react-native';
+import {
+  View, StyleSheet, Alert, Text,
+} from 'react-native';
 import firebase from 'firebase';
 import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
@@ -41,10 +43,9 @@ function MemoListScreen(props) {
           setIsLoading(false);
         },
         (error) => {
-          console.log(error);
           setIsLoading(false);
           Alert.alert('データの読み込みに失敗しました');
-        }
+        },
       );
     }
     return unscribe;

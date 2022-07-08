@@ -24,7 +24,11 @@ function LoginScreen(props) {
       if (user) {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'MemoList' }],
+          routes: [
+            {
+              name: 'MemoList',
+            },
+          ],
         });
       } else {
         setIsLoading(false);
@@ -40,9 +44,12 @@ function LoginScreen(props) {
         const { user } = userCredential;
         navigation.reset({
           index: 0,
-          routes: [{ name: 'MemoList' }],
+          routes: [
+            {
+              name: 'MemoList',
+            },
+          ],
         });
-        console.log(user.uid);
       })
       .catch((error) => {
         const errorMsg = translateErrors(error.code);
@@ -90,7 +97,11 @@ function LoginScreen(props) {
             onPress={() => {
               navigation.reset({
                 index: 0,
-                routes: [{ name: 'SignUp' }],
+                routes: [
+                  {
+                    name: 'SignUp',
+                  },
+                ],
               });
             }}
           >

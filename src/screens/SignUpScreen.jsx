@@ -26,7 +26,6 @@ function SingUpScreen(props) {
           index: 0,
           routes: [{ name: 'MemoList' }],
         });
-        console.log(user.uid);
       })
       .catch((error) => {
         const errorMsg = translateErrors(error.code);
