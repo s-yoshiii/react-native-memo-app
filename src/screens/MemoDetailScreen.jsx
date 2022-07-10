@@ -40,7 +40,7 @@ function MemoDetailScreen(props) {
         </Text>
       </View>
       <ScrollView style={styles.memoBody}>
-        <Text>買い物リスト テキストテキストテキスト</Text>
+        <Text style={styles.memoText}>{memo && memo.bodyText}</Text>
       </ScrollView>
       <CircleButton
         name="pencil"
@@ -86,6 +86,10 @@ const styles = StyleSheet.create({
   memoBody: {
     paddingVertical: 32,
     paddingHorizontal: 27,
+  },
+  memoText: {
+    fontSize: 16,
+    lineHeight: 24,
   },
 });
 export default MemoDetailScreen;
