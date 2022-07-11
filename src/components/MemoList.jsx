@@ -52,7 +52,7 @@ function MemoList(props) {
           });
         }}
       >
-        <View>
+        <View style={styles.memoInner}>
           <Text style={styles.memoListTitle} numberOfLines={1}>
             {item.bodyText}
           </Text>
@@ -86,7 +86,7 @@ MemoList.propsTypes = {
       id: string,
       bodyText: string,
       updatedAt: instanceOf(Date),
-    }),
+    })
   ).isRequired,
 };
 const styles = StyleSheet.create({
@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 19,
     borderBottomColor: '#CA965C',
     borderBottomWidth: 1,
+  },
+  memoInner: {
+    flex: 1,
   },
   memoListTitle: {
     fontSize: 16,

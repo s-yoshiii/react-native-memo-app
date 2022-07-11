@@ -39,8 +39,10 @@ function MemoDetailScreen(props) {
           {memo && dateToString(memo.updatedAt)}
         </Text>
       </View>
-      <ScrollView style={styles.memoBody}>
-        <Text style={styles.memoText}>{memo && memo.bodyText}</Text>
+      <ScrollView>
+        <View style={styles.memoBodyInner}>
+          <Text style={styles.memoText}>{memo && memo.bodyText}</Text>
+        </View>
       </ScrollView>
       <CircleButton
         name="pencil"
@@ -83,9 +85,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 12,
   },
-  memoBody: {
-    paddingVertical: 32,
+  memoBodyInner: {
     paddingHorizontal: 27,
+    paddingTop: 32,
+    paddingBottom: 80,
   },
   memoText: {
     fontSize: 16,
