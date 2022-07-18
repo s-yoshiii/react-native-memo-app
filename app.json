@@ -15,20 +15,22 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.s-yoshiii.react-native-memo-app",
       "buildNumber": "1.0.0"
     },
     "android": {
-      // "package": "",
       "versionCode": 1,
       "permissions": [],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundImage": "./assets/adaptive-icon.png"
-      }
+      },
+      "package": "com.syoshiii.reactnativememoapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
